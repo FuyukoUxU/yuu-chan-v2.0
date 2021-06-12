@@ -10,7 +10,7 @@ module.exports = {
 
         if (!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(`Bạn không có quyền quản lí role`).then(m => m.delete({ timeout: 5000 }));
 
-        if (!args[0] || !args[1]) return message.channel.send("Câu lệnh sai. Nhập a.h addrole để xem hướng dẫn").then(m => m.delete({ timeout: 5000 }))
+        if (!args[0] || !args[1]) return message.channel.send("Câu lệnh sai. Nhập _help addrole để xem hướng dẫn").then(m => m.delete({ timeout: 5000 }))
 
         try {
 
