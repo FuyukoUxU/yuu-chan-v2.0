@@ -19,7 +19,7 @@ module.exports = {
                 .addField('Đáp án', math.evaluate(args.join(" ")))
             )
         } catch (err) {
-            return message.reply(`Mình không giải được :( | Vì lỗi này : \`${err.message}\` Aiko#1782 fix nhanh nhé !`);
+            return message.reply(`Mình không giải được :( | Vì lỗi này : \`${err.message}\` Shirakami Yuu#5382 fix nhanh nhé !`);
         }
     },
 };
