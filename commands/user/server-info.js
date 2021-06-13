@@ -2,11 +2,12 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: "server-info",
-    category: "User",
+    category: "user",
     aliases: ['svif'],
-    description: "Check server info.",
+    description: "Check info của server.",
     usage: '_server-info / _svif',
     run: async (client, message, args) => {
+        if (message.channel.type == 'dm') return message.channel.send("Lệnh này không thể dùng ở đây !");
         let region;
         switch (message.guild.region) {
             case "brazil":
@@ -56,18 +57,18 @@ module.exports = {
             .setTitle(`${message.guild.name} server stats`)
             .addFields(
                 {
-                    name: "Owner: ",
-                    value: `${message.guild.owner.user.tag}`,
+                    name: "Trùm cuối: ",
+                    value: message.guild.owner.user.tag,
                     inline: true
                 },
                 {
-                    name: "Members: ",
+                    name: "Thành viên: ",
                     value: `Có ${message.guild.memberCount} thành viên!`,
                     inline: true
                 },
                 {
-                    name: "Thành viên Online: ",
-                    value: `Có ${message.guild.members.cache.filter(m => m.user.presence.status == "online").size} thành viên đang online!`,
+                    name: "Members Online: ",
+                    value: `Có ${message.guild.members.cache.filter(m => m.user.presence.status == "online").size} thành viên online!`,
                     inline: true
                 },
                 {
@@ -76,13 +77,13 @@ module.exports = {
                     inline: true
                 },
                 {
-                    name: "Ngày thành lập server: ",
+                    name: "Ngày tạo server: ",
                     value: message.guild.createdAt.toLocaleDateString("en-us"),
                     inline: true
                 },
                 {
-                    name: "Số lượng roles: ",
-                    value: `Có ${message.guild.roles.cache.size} roles trong server.`,
+                    name: "Số role: ",
+                    value: `Có ${message.guild.roles.cache.size} roles ở server này.`,
                     inline: true,
                 },
                 {
@@ -91,20 +92,20 @@ module.exports = {
                     inline: true
                 },
                 {
-                    name: `Xác minh: `,
-                    value: message.guild.verified ? 'Server đã được xác minh' : `Server chưa được xác minh`,
+                    name: `Verified: `,
+                    value: message.guild.verified ? 'Server đã được verified' : `Server chưa verified`,
                     inline: true
                 },
                 {
                     name: 'Boosters: ',
-                    value: message.guild.premiumSubscriptionCount >= 1 ? `Có ${message.guild.premiumSubscriptionCount} Boosters` : `Không có boosters`,
+                    value: message.guild.premiumSubscriptionCount >= 1 ? `Có ${message.guild.premiumSubscriptionCount} Boosters` : `Không có boosters nào`,
                     inline: true
                 },
                 {
                     name: "Emojis: ",
-                    value: message.guild.emojis.cache.size >= 1 ? `Có ${message.guild.emojis.cache.size} emojis!` : 'Không có emojis' ,
+                    value: message.guild.emojis.cache.size >= 1 ? `Có ${message.guild.emojis.cache.size} emojis!` : 'Không có emoji!' ,
                     inline: true
-                }
+                },
             )
         await message.channel.send(embed)
     }
