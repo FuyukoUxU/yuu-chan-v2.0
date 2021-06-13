@@ -5,7 +5,7 @@ module.exports = {
     category: "User",
     aliases: ['ui'],
     description: "Check user info.",
-    usage: '_user-info / a.ui',
+    usage: '_user-info / _ui',
     run: async (client, message, args) => {
         if (message.channel.type == 'dm') return message.channel.send("Lệnh này không thể dùng ở đây !");
         var permissions = [];
